@@ -1,0 +1,98 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Register — UserAuth{% endblock %}
+
+{% block content %}
+<div class="card">
+
+    <!-- Header -->
+    <div class="card-header">
+        <h1>Create Account</h1>
+        <p>Fill in the form below to register.</p>
+    </div>
+
+    <!-- Django messages (e.g. success after redirect) -->
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <!-- Registration Form -->
+    <form method="POST" action="{% url 'accounts:register' %}">
+        {% csrf_token %}   {# Required for security — prevents CSRF attacks #}
+
+        <!-- Non-field errors (e.g. general form errors) -->
+        {% if form.non_field_errors %}
+            <div class="non-field-errors">
+                {{ form.non_field_errors }}
+            </div>
+        {% endif %}
+
+        <!-- USERNAME field -->
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <ul class="field-errors">
+                    {% for error in form.username.errors %}
+                        <li>⚠ {{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <p class="helptext">{{ form.username.help_text }}</p>
+        </div>
+
+        <!-- EMAIL field -->
+        <div class="form-group">
+            <label for="{{ form.email.id_for_label }}">Email Address</label>
+            {{ form.email }}
+            {% if form.email.errors %}
+                <ul class="field-errors">
+                    {% for error in form.email.errors %}
+                        <li>⚠ {{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <p class="helptext">{{ form.email.help_text }}</p>
+        </div>
+
+        <!-- PASSWORD field -->
+        <div class="form-group">
+            <label for="{{ form.password1.id_for_label }}">Password</label>
+            {{ form.password1 }}
+            {% if form.password1.errors %}
+                <ul class="field-errors">
+                    {% for error in form.password1.errors %}
+                        <li>⚠ {{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <p class="helptext">{{ form.password1.help_text }}</p>
+        </div>
+
+        <!-- CONFIRM PASSWORD field -->
+        <div class="form-group">
+            <label for="{{ form.password2.id_for_label }}">Confirm Password</label>
+            {{ form.password2 }}
+            {% if form.password2.errors %}
+                <ul class="field-errors">
+                    {% for error in form.password2.errors %}
+                        <li>⚠ {{ error }}</li>
+                    {% endfor %}
+                </ul>
+            {% endif %}
+            <p class="helptext">{{ form.password2.help_text }}</p>
+        </div>
+
+        <button type="submit" class="btn">Register →</button>
+    </form>
+
+    <div class="card-footer">
+        Already have an account? <a href="{% url 'accounts:login' %}">Log in here</a>
+    </div>
+
+</div>
+{% endblock %}

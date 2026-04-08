@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}UserAuth{% endblock %}</title>
+    <style>
+        /* ─── Reset & Base ─────────────────────────────── */
+        *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: #f0ece4;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem 1rem;
+        }
+
+        /* ─── Card ──────────────────────────────────────── */
+        .card {
+            background: #fff;
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            padding: 2.5rem 2.8rem;
+            width: 100%;
+            max-width: 440px;
+            box-shadow: 6px 6px 0 #1a1a1a;
+        }
+
+        /* ─── Header ────────────────────────────────────── */
+        .card-header {
+            text-align: center;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid #1a1a1a;
+            padding-bottom: 1.2rem;
+        }
+        .card-header h1 {
+            font-size: 1.8rem;
+            letter-spacing: -0.5px;
+            color: #1a1a1a;
+        }
+        .card-header p {
+            font-size: 0.85rem;
+            color: #666;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        /* ─── Form Fields ───────────────────────────────── */
+        .form-group {
+            margin-bottom: 1.3rem;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.78rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #1a1a1a;
+            margin-bottom: 0.4rem;
+            font-family: 'Courier New', monospace;
+        }
+        .form-group input {
+            width: 100%;
+            padding: 0.65rem 0.85rem;
+            border: 2px solid #1a1a1a;
+            border-radius: 0;
+            font-size: 0.95rem;
+            font-family: inherit;
+            background: #faf9f7;
+            color: #1a1a1a;
+            outline: none;
+            transition: background 0.15s;
+        }
+        .form-group input:focus {
+            background: #fff9e6;
+            border-color: #c0392b;
+        }
+        .form-group .helptext {
+            font-size: 0.75rem;
+            color: #888;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        /* ─── Errors ────────────────────────────────────── */
+        .field-errors {
+            list-style: none;
+            padding: 0;
+        }
+        .field-errors li {
+            font-size: 0.78rem;
+            color: #c0392b;
+            margin-top: 0.25rem;
+            font-family: 'Courier New', monospace;
+        }
+        .non-field-errors {
+            background: #fdecea;
+            border-left: 4px solid #c0392b;
+            padding: 0.7rem 1rem;
+            margin-bottom: 1rem;
+            font-size: 0.85rem;
+            color: #c0392b;
+        }
+
+        /* ─── Messages (Django) ──────────────────────────── */
+        .messages {
+            list-style: none;
+            margin-bottom: 1.2rem;
+        }
+        .messages li {
+            padding: 0.65rem 1rem;
+            font-size: 0.85rem;
+            border-left: 4px solid;
+            margin-bottom: 0.4rem;
+        }
+        .messages li.success { border-color: #27ae60; background: #eafaf1; color: #1e8449; }
+        .messages li.error   { border-color: #c0392b; background: #fdecea; color: #c0392b; }
+        .messages li.info    { border-color: #2980b9; background: #eaf4fb; color: #1a6fa0; }
+
+        /* ─── Button ────────────────────────────────────── */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 0.8rem;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: bold;
+            letter-spacing: 1.5px;
+            text-transform: uppercase;
+            font-family: 'Courier New', monospace;
+            border: 2px solid #1a1a1a;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+            margin-top: 1.5rem;
+        }
+        .btn:hover {
+            background: #c0392b;
+            border-color: #c0392b;
+        }
+
+        /* ─── Footer links ──────────────────────────────── */
+        .card-footer {
+            text-align: center;
+            margin-top: 1.4rem;
+            font-size: 0.82rem;
+            color: #666;
+            border-top: 1px solid #ddd;
+            padding-top: 1rem;
+        }
+        .card-footer a {
+            color: #c0392b;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .card-footer a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    {% block content %}{% endblock %}
+</body>
+</html>

@@ -1,0 +1,35 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Success — UserAuth{% endblock %}
+
+{% block content %}
+<div class="card" style="text-align:center;">
+
+    <div class="card-header">
+        <h1>🎉 You're In!</h1>
+        <p>Your account has been created successfully.</p>
+    </div>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <p style="margin: 1.5rem 0; color: #444; font-size: 0.95rem; line-height: 1.6;">
+        Welcome aboard! Your account is ready and stored securely in the database.
+        You can now log in at any time.
+    </p>
+
+    <a href="{% url 'accounts:login' %}" class="btn" style="text-decoration:none; display:inline-block; width:auto; padding: 0.8rem 2rem;">
+        Go to Login →
+    </a>
+
+    <div class="card-footer" style="margin-top: 1.5rem;">
+        <a href="{% url 'accounts:register' %}">Register another account</a>
+    </div>
+
+</div>
+{% endblock %}

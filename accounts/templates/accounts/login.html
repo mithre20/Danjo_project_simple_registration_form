@@ -1,0 +1,58 @@
+{% extends "accounts/base.html" %}
+
+{% block title %}Login — UserAuth{% endblock %}
+
+{% block content %}
+<div class="card">
+
+    <div class="card-header">
+        <h1>Welcome Back</h1>
+        <p>Enter your credentials to continue.</p>
+    </div>
+
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+                <li class="{{ message.tags }}">{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+
+    <form method="POST" action="{% url 'accounts:login' %}">
+        {% csrf_token %}
+
+        {% if form.non_field_errors %}
+            <div class="non-field-errors">{{ form.non_field_errors }}</div>
+        {% endif %}
+
+        <!-- USERNAME -->
+        <div class="form-group">
+            <label for="{{ form.username.id_for_label }}">Username</label>
+            {{ form.username }}
+            {% if form.username.errors %}
+                <ul class="field-errors">
+                    {% for error in form.username.errors %}<li>⚠ {{ error }}</li>{% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <!-- PASSWORD -->
+        <div class="form-group">
+            <label for="{{ form.password.id_for_label }}">Password</label>
+            {{ form.password }}
+            {% if form.password.errors %}
+                <ul class="field-errors">
+                    {% for error in form.password.errors %}<li>⚠ {{ error }}</li>{% endfor %}
+                </ul>
+            {% endif %}
+        </div>
+
+        <button type="submit" class="btn">Log In →</button>
+    </form>
+
+    <div class="card-footer">
+        No account yet? <a href="{% url 'accounts:register' %}">Register here</a>
+    </div>
+
+</div>
+{% endblock %}
