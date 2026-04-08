@@ -12,15 +12,16 @@ from . import views
 app_name = 'accounts'   # Namespace for URL reversing
 
 urlpatterns = [
-    # /accounts/register/  →  registration form
+    # /  or /login/        →  login form (root redirects here too)
+    path('',         views.login_view,    name='login'),
+    path('login/',   views.login_view,    name='login_explicit'),
+
+    # /register/           →  registration form
     path('register/', views.register_view, name='register'),
 
-    # /accounts/login/     →  login form
-    path('',    views.login_view,    name='login'),
-
-    # /accounts/logout/    →  log out and redirect
+    # /logout/             →  log out and redirect
     path('logout/',   views.logout_view,   name='logout'),
 
-    # /accounts/success/   →  post-registration success page
+    # /success/            →  post-login/registration success page
     path('success/',  views.success_view,  name='success'),
 ]

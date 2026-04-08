@@ -75,9 +75,9 @@ USE_I18N = True
 USE_TZ = True
 STATIC_URL = 'static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICSFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 # Redirect after login
-LOGIN_URL = '/accounts/login/'
-LOGIN_REDIRECT_URL = '/accounts/success/'
+LOGIN_URL = '/login/'
+LOGIN_REDIRECT_URL = '/success/'
